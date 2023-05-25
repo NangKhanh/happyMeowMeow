@@ -10,8 +10,9 @@
         body {
             background-color: rgb(215, 95, 95);
         }
-        
-        h1{
+
+        h1,
+        h2 {
             color: rgb(222, 222, 39);
             text-align: center;
         }
@@ -28,17 +29,26 @@
             max-width: 100%;
             max-height: 100%;
         }
+
+        #shutup {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-    <div><h1>Click the meow</h1></div>
+    <div>
+        <h1>Click the meow</h1>
+    </div>
     <div class="container">
         <img id="pop" onclick="pop()" class="centered-image" src="image/Popcat png.png" alt="">
     </div>
+    <h2 id="shutup" onclick="shutUp()">ShutUp</h2>
+    <audio id="popSound" src="media/popcat.mp3"></audio>
 
     <script>
         let x = true;
+        let isMuted = true;
         function pop() {
             if (x) {
                 document.getElementById('pop').src = "image/Popcat Wow png.png";
@@ -47,9 +57,29 @@
                 document.getElementById('pop').src = "image/Popcat png.png";
                 x = true;
             }
+            if (isMuted) {
+                playSound();
+            }
         }
 
-        // Resize the image when the window size changes
+        function playSound() {
+            const audio = document.getElementById('popSound');
+            audio.play();
+        }
+
+        function shutUp() {
+            if (isMuted) {
+                const shutUpButton = document.querySelector('h2');
+                shutUpButton.style.textDecoration = "line-through";
+                isMuted = false;
+            } else {
+                
+            const shutUpButton = document.querySelector('h2');
+            shutUpButton.style.textDecoration = "none";
+                isMuted = true;
+            }
+        }
+
         window.onresize = function () {
             resizeImage();
         };
