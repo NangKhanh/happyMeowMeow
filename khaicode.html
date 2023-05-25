@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khai cốt đầu lăm 2023</title>
+    <style>
+        body {
+            background-color: rgb(215, 95, 95);
+        }
+        h1 {
+            color: rgb(237, 237, 140);
+            text-align: center;
+        }
+
+        img {
+            width: 580px;
+            margin-left: 460px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hẹp pi niw dia 2023 (click the meow)</h1>
+    <div>
+        <img id="pop" onclick="pop()" src="image/Popcat png.png" alt="">
+    </div>
+</body>
+<script>
+    let x = true
+    function pop() {
+        if (x) {
+            document.getElementById('pop').src = "image/Popcat Wow png.png";
+            x = false;
+        }else{
+            document.getElementById('pop').src = "image/Popcat png.png";
+            x = true;
+        }
+    }
+</script>
+
+</html>
