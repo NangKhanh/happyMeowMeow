@@ -10,36 +10,76 @@
         body {
             background-color: rgb(215, 95, 95);
         }
-        h1 {
-            color: rgb(237, 237, 140);
+        
+        h1{
+            color: rgb(222, 222, 39);
             text-align: center;
         }
 
-        img {
-            width: 580px;
-            margin-left: 460px;
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .centered-image {
             cursor: pointer;
+            max-width: 100%;
+            max-height: 100%;
         }
     </style>
 </head>
 
 <body>
-    <h1>Hẹp pi niw dia 2023 (click the meow)</h1>
-    <div>
-        <img id="pop" onclick="pop()" src="image/Popcat png.png" alt="">
+    <div><h1>Click the meow</h1></div>
+    <div class="container">
+        <img id="pop" onclick="pop()" class="centered-image" src="image/Popcat png.png" alt="">
     </div>
-</body>
-<script>
-    let x = true
-    function pop() {
-        if (x) {
-            document.getElementById('pop').src = "image/Popcat Wow png.png";
-            x = false;
-        }else{
-            document.getElementById('pop').src = "image/Popcat png.png";
-            x = true;
+
+    <script>
+        let x = true;
+        function pop() {
+            if (x) {
+                document.getElementById('pop').src = "image/Popcat Wow png.png";
+                x = false;
+            } else {
+                document.getElementById('pop').src = "image/Popcat png.png";
+                x = true;
+            }
         }
-    }
-</script>
+
+        // Resize the image when the window size changes
+        window.onresize = function () {
+            resizeImage();
+        };
+
+        function resizeImage() {
+            const container = document.querySelector('.container');
+            const image = document.querySelector('.centered-image');
+
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+
+            const imageWidth = image.naturalWidth;
+            const imageHeight = image.naturalHeight;
+
+            const widthRatio = containerWidth / imageWidth;
+            const heightRatio = containerHeight / imageHeight;
+
+            const scale = Math.min(widthRatio, heightRatio);
+
+            const newWidth = Math.floor(imageWidth * scale);
+            const newHeight = Math.floor(imageHeight * scale);
+
+            image.style.width = newWidth + 'px';
+            image.style.height = newHeight + 'px';
+        }
+
+        // Call resizeImage initially
+        resizeImage();
+    </script>
+
+</body>
 
 </html>
