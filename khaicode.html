@@ -33,17 +33,27 @@
         #shutup {
             cursor: pointer;
         }
+
+        .meowShut {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 
 <body>
     <div>
         <h1>Click the meow</h1>
+
+        <div class="meowShut">
+            <h2> click the "</h2>
+            <h2 id="shutup" onclick="shutUp()"><span>ShutUp</span></h2>
+            <h2> " to shut the meow up</h2>
+        </div>
     </div>
     <div class="container">
         <img id="pop" onclick="pop()" class="centered-image" src="image/Popcat png.png" alt="">
     </div>
-    <h2 id="shutup" onclick="shutUp()">ShutUp</h2>
     <audio id="popSound" src="media/popcat.mp3"></audio>
 
     <script>
@@ -69,13 +79,13 @@
 
         function shutUp() {
             if (isMuted) {
-                const shutUpButton = document.querySelector('h2');
+                const shutUpButton = document.querySelector('span');
                 shutUpButton.style.textDecoration = "line-through";
                 isMuted = false;
             } else {
-                
-            const shutUpButton = document.querySelector('h2');
-            shutUpButton.style.textDecoration = "none";
+
+                const shutUpButton = document.querySelector('span');
+                shutUpButton.style.textDecoration = "none";
                 isMuted = true;
             }
         }
